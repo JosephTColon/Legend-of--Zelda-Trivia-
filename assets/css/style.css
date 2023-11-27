@@ -31,6 +31,10 @@ body {
     font-weight: bold;
 }
 
+#timer {
+    font-weight: bold;
+}
+
 #back {
     font-weight: bold;
     background-color: var(--bgbuttons);
@@ -41,4 +45,12 @@ body {
     font-weight: bold;
     background-color: var(--bgbuttons);
     color: var(--buttons);
+}
+
+li {
+    background-color: var(--bgbuttons);
+    color: var(--buttons);
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-top: 5px;
 }
