@@ -1,0 +1,44 @@
+:root {
+    --buttons: blue;
+    --bgbuttons: yellow;
+}
+
+body {
+    background-color: green;
+}
+
+#wrapper {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+}
+
+#score {
+    font-size: large;
+    font-weight: bolder;
+    color: blue;
+}
+
+#questions {
+    font-size: larger;
+    font-weight: bold;
+    color: black;
+}
+
+#start-time {
+    color: var(--buttons);
+    background-color: yellow;
+    font-weight: bold;
+}
+
+#back {
+    font-weight: bold;
+    background-color: var(--bgbuttons);
+    color: var(--buttons);
+}
+
+#clear-HS {
+    font-weight: bold;
+    background-color: var(--bgbuttons);
+    color: var(--buttons);
+}
