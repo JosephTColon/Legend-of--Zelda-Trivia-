@@ -7,7 +7,7 @@ var questionIndex =0;
 var ulCreator = document.createElement("ul");
 
 //time variables
-var secondsLeft = 80;
+var secondsLeft = 60;
 var holdInterval = 0;
 var penalty = 7;
 
@@ -95,3 +95,69 @@ function compare(event) {
     questionVar.appendChild(createDiv);
 }
 
+// Once all done append last page
+function allDone() {
+    questionVar.innerHTML = "";
+    timer.innerHTML = "";
+    // creates a heading
+    var createHead = document.createElement("h1");
+    createHead.setAttribute("id", "createH1");
+    createHead.textContent = "You did it!!"
+    questionVar.appendChild(createHead);
+    // creates paragraph
+    var createParagraph = document.createElement("p");
+    createParagraph.setAttribute("id", "createP");
+    questionVar.appendChild(createParagraph);
+    // calculates time remaining
+    if(secondsLeft >= 0) {
+        var timeRemaining = secondsLeft;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        createParagraph.textContent = "Your score is " + timeRemaining;
+        questionVar.appendChild(createP2);
+    }
+    // Creates Label
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your initials: ";
+
+    questionVar.appendChild(createLabel);
+    
+    // Creates input
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "submit");
+    createInput.textContent = "submit";
+
+    questionVar.appendChild(createInput);
+    // Creates submits
+    var createSubmit = document.createElement("button");
+    createSubmit.setAttribute("type", "submit")
+    createSubmit.setAttribute("id", "submit")
+    createSubmit.textContent = "submit";
+
+    questionVar.appendChild(createSubmit);
+
+    createSubmit.addEventListener("click", function() {
+        var initials = createInput.value;
+        if(initials === null) {
+            console.log("no value entered.");
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: timeRemaining
+            }
+            var allScores = localStorage.getItem("allScore");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+            window.location.replace("./HighScore.html");
+        }
+    });
+    
+}
